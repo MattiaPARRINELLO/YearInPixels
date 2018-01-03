@@ -3,27 +3,42 @@ import axios from 'axios';
 
 export default class InstagramImage extends Component {
     constructor(props){
-      super(props);
-      this.state = {
-        url : undefined
-      }
-      this.componentWillReceiveProps(props);
+        super(props);
+        this.state = {
+            data : props.data,
+            img : props.img,
+            url : undefined
+        }
+    }
+
+    componentDidMount(){
+        this.cacheOrGet();
     }
 
     componentWillReceiveProps(props){
-      this.setState({
-        data : props.data,
-        img : props.img,
-        url : undefined
-      });
-      if(props.img){
-        this.getIGImage(props.img).then((response) => {
-          this.setState({
-            url : response.data.thumbnail_url
-          })
-          console.log(this.state.url);
+        this.setState({
+            data : props.data,
+            img : props.img,
+            url : undefined
         });
-      };
+
+        this.cacheOrGet();
+    }
+
+    cacheOrGet(){
+        var cache = localStorage.getItem("ig_" + this.state.img);
+        if(!cache && this.state.img){
+            this.getIGImage(this.state.img).then((response) => {
+                this.setState({
+                    url : response.data.thumbnail_url
+                })
+                localStorage.setItem("ig_" + this.state.img, response.data.thumbnail_url);
+            });
+        }else{
+            this.setState({
+                url : cache
+            })  
+        }
     }
 
     getIGImage(img_url){
