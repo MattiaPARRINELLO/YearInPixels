@@ -29,7 +29,9 @@ class EventView extends Component {
             </a>
             <h3>{moment(this.state.date).format("dddd, MMMM Do YYYY")}</h3>
             <p>{this.state.data[2]}</p>
-            <div className="text-center"><InstagramImage alt="IG" img={this.state.data[3]}/></div>
+            <div className="text-center">
+              {this.state.data[3] ? <InstagramImage alt="IG" img={this.state.data[3]}/> : []}
+            </div>
           </div>
         </div>
       )
