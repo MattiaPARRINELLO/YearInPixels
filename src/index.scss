@@ -22,8 +22,9 @@ h1,h2,h3 {
   font-family: 'Roboto Slab', serif;
 }
 
-.container {
+.container-app {
   width: 90vw;
+  padding-top: 35px;
   margin: 0 auto;
 }
 
@@ -31,6 +32,8 @@ h1,h2,h3 {
   display: flex;
   flex-direction : row;
   flex-wrap : wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .cal-item {
@@ -44,6 +47,12 @@ h1,h2,h3 {
   z-index: 1000;
 }
 
+.cal-blank {
+  @extend .cal-item;
+  background-color: inherit;
+  height: 1px;
+}
+
 .cal-outline {
   outline-style: solid;
   outline-color: rgba(130, 205, 224,0.7);
@@ -55,6 +64,11 @@ h1,h2,h3 {
     outline-offset: 5px;
     outline-color: rgba(130, 205, 224,0);
   }
+}
+
+.cal-legend-text {
+  padding-top: 0.8em;
+  padding-left: 1em;
 }
 
 .cal-color-0{
