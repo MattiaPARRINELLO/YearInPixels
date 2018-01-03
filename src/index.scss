@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab');
+
+:root {
+  --cal-color-0 : #ED2893;
+  --cal-color-1 : #06A77D;
+  --cal-color-2 : #78C0E0;
+  --cal-color-3 : #045C45;
+  --cal-color-4 : #003893;
+  --cal-color-5 : #C1292E;
+  --cal-color-6 : #FCA311;
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,h2,h3 {
+  font-family: 'Roboto Slab', serif;
+}
+
+.container {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.cal-container {
+  display: flex;
+  flex-direction : row;
+  flex-wrap : wrap;
+}
+
+.cal-item {
+  background: #eee;
+  width: 3em;
+  height: 3em;
+  margin: 0px 5px 5px 0px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  z-index: 1000;
+}
+
+.cal-outline {
+  outline-style: solid;
+  outline-color: rgba(130, 205, 224,0.7);
+  outline-offset: 2px;
+  outline-width: 5px;
+  transition: 0.5s;
+  z-index: 1001;
+  &:hover {
+    outline-offset: 5px;
+    outline-color: rgba(130, 205, 224,0);
+  }
+}
+
+.cal-color-0{
+  background-color: var(--cal-color-0);
+}
+
+.cal-color-1{
+  background-color: var(--cal-color-1);
+}
+
+.cal-color-2{
+  background-color: var(--cal-color-2);
+}
+
+.cal-color-3{
+  background-color: var(--cal-color-3);
+}
+
+.cal-color-4{
+  background-color: var(--cal-color-4);
+}
+
+.cal-color-5{
+  background-color: var(--cal-color-5);
+}
+
+.cal-color-6{
+  background-color: var(--cal-color-6);
+}
