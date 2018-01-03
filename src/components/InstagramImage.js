@@ -7,6 +7,7 @@ export default class InstagramImage extends Component {
       this.state = {
         url : undefined
       }
+      this.componentWillReceiveProps(props);
     }
 
     componentWillReceiveProps(props){
