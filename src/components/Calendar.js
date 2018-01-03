@@ -16,13 +16,24 @@ class CalendarItem extends Component {
           color : props.color,
           date : props.date,
           isToday : props.date ? moment().isSame(props.date,'day') : false,
-          blank : props.blank
+          blank : props.blank,
+          data : props.row
       }
-    }  
+    }
+
+    renderTags(){
+      var tags=[];
+      if(this.props.data[3]){
+        tags.push(<i key={3} className="fa fa-instagram" aria-hidden="true"></i>);
+      }
+      return tags;
+    }
     
     render() {
       return (
-        <div className={(this.props.blank ? "cal-blank ": "cal-item")+" "+(this.state.isToday ? "cal-outline":"")+" cal-color-"+this.props.color}>{this.props.children}</div>
+        <div onClick={this.props.onClick} className={(this.props.blank ? "cal-blank ": "cal-item")+" "+(this.state.isToday ? "cal-outline":"")+" cal-color-"+this.props.color}>{this.props.children}
+          {this.props.data ? this.renderTags() : []}
+        </div>
       )
     }
 }

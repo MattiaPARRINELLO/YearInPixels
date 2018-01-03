@@ -26,6 +26,11 @@ h1,h2,h3 {
   width: 90vw;
   padding-top: 35px;
   margin: 0 auto;
+  transition: 0.5s filter;
+}
+
+.background-blur {
+  filter: blur(5px);
 }
 
 .cal-container {
@@ -45,6 +50,7 @@ h1,h2,h3 {
   font-weight: bold;
   font-size: 1em;
   z-index: 1000;
+  padding: 0.3em;
 }
 
 .cal-blank {
@@ -97,4 +103,37 @@ h1,h2,h3 {
 
 .cal-color-6{
   background-color: var(--cal-color-6);
+}
+
+.event-view {
+  position: absolute;
+  top : 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  color: white;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-view-container {
+  padding: 20px;
+  width: 30vw;
+}
+
+@media (max-width: 768px) {
+  .event-view-container {
+    width: 90vw;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.insta-image {
+  width: 100%;
 }
