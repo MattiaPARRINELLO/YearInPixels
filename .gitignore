@@ -1,3 +1,4 @@
+build/
 src/config.json
 
 # Created by https://www.gitignore.io/api/node,linux,visualstudiocode
