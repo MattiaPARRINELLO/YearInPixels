@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import AppApi from '../utils/AppApi.js';
 
 export default class InstagramImage extends Component {
     constructor(props){
@@ -28,7 +28,7 @@ export default class InstagramImage extends Component {
     cacheOrGet(){
         var cache = localStorage.getItem("ig_" + this.state.img);
         if(!cache && this.state.img){
-            this.getIGImage(this.state.img).then((response) => {
+            AppApi.getIGImage(this.state.img).then((response) => {
                 this.setState({
                     url : response.data.thumbnail_url
                 })
@@ -39,16 +39,6 @@ export default class InstagramImage extends Component {
                 url : cache
             })  
         }
-    }
-
-    getIGImage(img_url){
-      return axios({
-        method: 'get',
-        url: 'https://api.instagram.com/oembed/',
-        params: {
-          url: img_url,
-        }
-      });
     }
     
     render() {

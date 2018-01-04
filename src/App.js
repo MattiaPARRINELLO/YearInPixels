@@ -4,6 +4,7 @@ import AppApi from './utils/AppApi.js';
 import Calendar from './components/Calendar.js';
 import EventView from './components/EventView.js';
 import moment from 'moment';
+import lscache from 'lscache';
 
 const day_types = {
   0 : "Fantastic Day",
@@ -24,17 +25,28 @@ class App extends Component {
       EventViewActive : false,
       currentItem : undefined
     }
+
     this.handleItem = this.handleItem.bind(this);
     this.dismissHandler = this.dismissHandler.bind(this);
   }
 
   componentDidMount(){
-    AppApi.getSheet().then((response)=>{
+    if(lscache.get('sheet_data')){
       this.setState({
         loading : false,
-        data : response.data
-      })
-    });
+        data : lscache.get('sheet_data'),
+        EventViewActive : false,
+        currentItem : undefined
+      });
+    }else{
+      AppApi.getSheet().then((response)=>{
+        lscache.set('sheet_data',response.data,120);
+        this.setState({
+          loading : false,
+          data : response.data
+        })
+      });
+    }
   }
 
   handleItem(row){
@@ -98,6 +110,9 @@ class App extends Component {
           </Row>
         </div>
         <EventView parent={this} dismissHandler={this.dismissHandler} active={this.state.EventViewActive} data={this.state.currentItem}/>
+        <div className={"toolbar"}>
+          <a href="#" onClick={()=>{lscache.flush()}}>Clear Cache</a>
+        </div>
       </div>
     );
   }

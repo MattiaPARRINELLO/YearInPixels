@@ -11,4 +11,14 @@ export default class AppApi {
             }
           });
     }
+
+    static getIGImage(img_url){
+        return axios({
+          method: 'get',
+          url: 'https://api.instagram.com/oembed/',
+          params: {
+            url: img_url,
+          }
+        });
+      }
 }
