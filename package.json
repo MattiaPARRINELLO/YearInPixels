@@ -2,7 +2,7 @@
   "name": "years-in-pixels",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://mattiaparrinello.github.io/YearInPixels",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.17.1",
